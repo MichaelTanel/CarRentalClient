@@ -19,7 +19,6 @@ app.get("/url", (req, res, next) => {
 		console.log(result);
 		res.send(result);
 	});
-	// res.json(["Tony", "Lisa", "Michael", "Food"]);
 });
 
 app.listen(3000, () => {
@@ -28,3 +27,4 @@ app.listen(3000, () => {
 
 require('./user');
 require('./account');
+require('./vehicle');
