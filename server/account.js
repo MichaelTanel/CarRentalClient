@@ -1,13 +1,6 @@
 var app = require('./app');
 
 var connection = require('./database');
-var bodyParser = require('body-parser');
-
-// Used to parse the body of HTTP requests.
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(bodyParser.json());
 
 // Verifies that the email and password exist in the database.
 app.post('/login', (req, res) => {
@@ -22,7 +15,7 @@ app.post('/login', (req, res) => {
             // Set the email in the result being returned.
             // Using result[0] since there will only be 1 element in the array.
             // Return auth token.
-            results[0].email = req.body.email
+            result[0].email = req.body.email
             res.json(result);
         }
     });
