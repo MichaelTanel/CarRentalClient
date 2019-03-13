@@ -1,5 +1,5 @@
 var app = require('./app');
 
-app.get('/users', (req, res, next) => {
+app.get('/user', (req, res, next) => {
     res.json(['Tim, Mike']);
 });
