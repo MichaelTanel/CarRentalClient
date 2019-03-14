@@ -4,8 +4,8 @@ var connection = require('./database');
 
 // Verifies that the email and password exist in the database.
 app.post('/login', (req, res) => {
-    var registerQuery = `SELECT FirstName, LastName, PhoneNumber, LicenseNumber, AnnualFee`;
-    registerQuery += ` FROM User WHERE Email = "${req.body.email}" AND Password = "${req.body.password}"`;
+    var registerQuery = `SELECT firstName, lastName, phoneNumber, licenseNumber, annualFee`;
+    registerQuery += ` FROM User WHERE email = "${req.body.email}" AND password = "${req.body.password}"`;
 
     connection.query(registerQuery, (err, result) => {
         if (err) {
