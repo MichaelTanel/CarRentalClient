@@ -51,3 +51,19 @@ app.get('/vehicles/:vin', (req, res) => {
         }
     });
 });
+
+// Select comments about specific vehicle
+app.get('/vehicles/:vin/comments', (req, res) => {
+    console.log(req.params.vin);
+    let vehicleComments = `SELECT Rental_History.comment FROM Vehicle as v`;
+    vehicleComments += ` INNER JOIN Rental_History as rh ON v.vin = rh.vin WHERE vin = '${req.params.vin}'`;
+
+    connection.query(vehicleComments, (err, result) => {
+        if (err) {
+            console.log(err.message);
+            res.json({error: err.message});
+        } else {
+            res.json(result);
+        }
+    });
+});
