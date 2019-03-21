@@ -11,8 +11,10 @@ app.get('/vehicles/:vin/rentalHistory', (req, res) => {
     connection.query(rentalHistory, (err, result) => {
         if (err) {
             console.log(err.message);
+            res.status(400);
             res.json({error: err.message});
         } else {
+            res.status(200);
             res.json(result);
         }
     });
@@ -28,8 +30,10 @@ app.put('/vehicles/:vin/rentalHistory', (req, res) => {
     connection.query(rentalHistory, tmpBody, (err, result) => {
         if (err) {
             console.log(err.message);
+            res.status(400);
             res.json({error: err.message});
         } else {
+            res.status(200);
             res.json(result);
         }
     });
