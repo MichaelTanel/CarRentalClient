@@ -3,7 +3,7 @@ var app = require('./app');
 var connection = require('./database');
 
 // Select rental history for a specific vin
-app.get('/vehicles/:vin/rentalHistory', (req, res) => {
+app.get('/rentalHistory/:vin', (req, res) => {
     let vin = req.params.vin;
 
     var rentalHistory = `SELECT comment FROM Rental_History WHERE vin = '${vin}'`;
@@ -21,7 +21,7 @@ app.get('/vehicles/:vin/rentalHistory', (req, res) => {
 });
 
 // Insert rental history for a specific vin
-app.put('/vehicles/:vin/rentalHistory', (req, res) => {
+app.put('/rentalHistory/:vin', (req, res) => {
     let tmpBody = req.body;
     tmpBody.vin = req.params.vin;
 

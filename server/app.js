@@ -27,5 +27,6 @@ app.listen(3000, () => {
 
 require('./account');
 require('./vehicle');
-require('./vehicleMaintenance');
+require('./maintenanceHistory');
 require('./rentalHistory');
+require('./reservation');

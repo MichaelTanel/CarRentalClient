@@ -3,7 +3,7 @@ var app = require('./app');
 var connection = require('./database');
 
 // Get maintenance history for all vehicles
-app.get('/vehicles/maintenanceHistory', (req, res) => {
+app.get('/maintenanceHistory', (req, res) => {
     var maintenanceHistory = 'SELECT * FROM Maintenance_History';
 
     connection.query(maintenanceHistory, (err, result) => {
@@ -17,7 +17,7 @@ app.get('/vehicles/maintenanceHistory', (req, res) => {
 });
 
 // Insert maintenance history row for a specific vin
-app.put('/vehicles/:vin/maintenanceHistory', (req, res) => {
+app.put('/maintenanceHistory/:vin', (req, res) => {
     let tmpBody = req.body;
     tmpBody.vin = req.params.vin;
 
@@ -35,7 +35,7 @@ app.put('/vehicles/:vin/maintenanceHistory', (req, res) => {
 });
 
 // Insert maintenance history row for a specific vin
-app.get('/vehicles/:vin/maintenanceHistory', (req, res) => {
+app.get('/maintenanceHistory/:vin', (req, res) => {
     let vin = req.params.vin;
 
     var maintenanceHistory = `SELECT * FROM Maintenance_History WHERE vin = '${vin}'`;
