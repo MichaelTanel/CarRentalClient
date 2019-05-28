@@ -1,14 +1,34 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainToolbarComponent } from './maintoolbar.component';
+import { RouterModule } from '@angular/router';
+import { MatToolbarModule, MatButtonModule, MatCardModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { LoginComponent } from '../login/login.component';
+import { RegisterComponent } from '../register/register.component';
+import { FormsModule } from '@angular/forms';
 
-describe('NavbarComponent', () => {
+describe('MainToolbarComponent', () => {
   let component: MainToolbarComponent;
   let fixture: ComponentFixture<MainToolbarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainToolbarComponent ]
+      declarations: [ 
+        MainToolbarComponent,
+        LoginComponent,
+        RegisterComponent
+      ],
+      imports: [
+        RouterModule,
+        MatToolbarModule,
+        MatButtonModule,
+        AppRoutingModule,
+        MatCardModule,
+        MatInputModule,
+        FormsModule,
+        MatProgressSpinnerModule
+      ]
     })
     .compileComponents();
   }));
