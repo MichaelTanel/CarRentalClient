@@ -9,11 +9,16 @@ export class RegisterComponent implements OnInit {
 
   constructor() { }
 
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+
   ngOnInit() {
   }
 
   register() : void {
-    console.log("registered");
+    console.log(this.firstName + " " + this.lastName + " " + this.email + " " + this.password);
   }
 
 }
