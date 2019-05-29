@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './components/home/home.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -31,7 +32,8 @@ describe('AppComponent', () => {
         AppComponent,
         MainToolbarComponent,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        HomeComponent
       ],
     }).compileComponents();
   }));
