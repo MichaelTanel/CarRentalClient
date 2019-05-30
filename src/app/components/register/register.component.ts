@@ -19,6 +19,14 @@ export class RegisterComponent implements OnInit {
 
   register() : void {
     console.log(this.firstName + " " + this.lastName + " " + this.email + " " + this.password);
+    this.clearForm();
+  }
+
+  clearForm() : void {
+    this.firstName = "";
+    this.lastName = "";
+    this.email = "";
+    this.password = "";
   }
 
 }
