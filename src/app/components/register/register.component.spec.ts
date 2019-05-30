@@ -35,4 +35,16 @@ describe('RegisterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should clear form', () => {
+    component.email = "test@gmail.com";
+    component.firstName = "test";
+    component.lastName = "user";
+    component.password = "H4lk2joi4";
+    component.register();
+    expect(component.email).toEqual("");
+    expect(component.firstName).toEqual("");
+    expect(component.lastName).toEqual("");
+    expect(component.password).toEqual("");
+  });
 });

@@ -10,6 +10,9 @@ describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
+  let validEmail = "test@gmail.com";
+  let validPassword = "user";
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
@@ -35,4 +38,26 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should clear form', () => {
+    component.email = validEmail;
+    component.password = validPassword;
+    component.login();
+    expect(component.email).toEqual("");
+    expect(component.password).toEqual("");
+  });
+
+  // TODO: modify form so that it can be tested.
+  // it('form should be valid', () => {
+  //   component.email = validEmail;
+  //   component.password = validPassword;
+  //   expect(component.ngForm.valid).toBeTruthy();
+  // });
+
+  // it('form should not be valid', () => {
+  //   component.email = validEmail;
+  //   // component.password = null;
+  //   component.ngForm.controls['email'].setValue('bademail.');
+  //   expect(component.ngForm.valid).toBeFalsy();
+  // });
 });

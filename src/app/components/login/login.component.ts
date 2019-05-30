@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   constructor() { }
+
+  @ViewChild(NgForm) ngForm: NgForm;
 
   email: string;
   password: string;
@@ -20,6 +23,12 @@ export class LoginComponent implements OnInit {
     // if success, route to home page
     // if failure, error message
     console.log(this.email + ' ' + this.password);
+    this.clearForm();
+  }
+
+  clearForm() : void {
+    this.email = "";
+    this.password = "";
   }
 
 }
