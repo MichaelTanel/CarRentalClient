@@ -6,7 +6,7 @@ import { MatToolbarModule, MatButtonModule, MatCardModule, MatInputModule, MatPr
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from '../home/home.component';
 
 describe('MainToolbarComponent', () => {
@@ -29,7 +29,8 @@ describe('MainToolbarComponent', () => {
         MatCardModule,
         MatInputModule,
         FormsModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        ReactiveFormsModule
       ]
     })
     .compileComponents();
