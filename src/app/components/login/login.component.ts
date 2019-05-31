@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,25 +10,29 @@ export class LoginComponent implements OnInit {
 
   constructor() { }
 
-  @ViewChild(NgForm) ngForm: NgForm;
-
-  email: string;
-  password: string;
+  loginForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
+  });
 
   ngOnInit() {
   }
 
+  onSubmit() {
+    this.login();
+  }
+
   login() : void {
+    console.log("form" + this.loginForm.value);
     // http request
     // if success, route to home page
     // if failure, error message
-    console.log(this.email + ' ' + this.password);
-    this.clearForm();
+    // console.log(this.email + ' ' + this.password);
+    // this.clearForm();
   }
 
-  clearForm() : void {
-    this.email = "";
-    this.password = "";
-  }
+  // clearForm() : void {
+  //   // this.password = "";
+  // }
 
 }
