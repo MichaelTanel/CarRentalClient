@@ -10,6 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -26,7 +27,8 @@ describe('AppComponent', () => {
         MatCardModule,
         MatFormFieldModule,
         MatProgressSpinnerModule,
-        MatInputModule
+        MatInputModule,
+        HttpClientModule
       ],
       declarations: [
         AppComponent,

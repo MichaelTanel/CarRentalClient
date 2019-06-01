@@ -10,6 +10,7 @@ import { MatButtonModule, MatCheckboxModule, MatToolbarModule, MatCardModule, Ma
 import { MainToolbarComponent } from './components/maintoolbar/maintoolbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HomeComponent } from './components/home/home.component';
     MatCardModule,
     MatFormFieldModule,
     MatProgressSpinnerModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
