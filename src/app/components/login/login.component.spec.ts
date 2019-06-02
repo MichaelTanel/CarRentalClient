@@ -5,6 +5,11 @@ import { MatCardModule, MatFormFieldModule, MatProgressSpinnerModule, MatInputMo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { User } from 'src/app/models/user';
+
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -12,6 +17,9 @@ describe('LoginComponent', () => {
 
   let validEmail = "test@gmail.com";
   let validPassword = "user";
+
+  let authService: AuthenticationService;
+  let httpTestingController: HttpTestingController;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -24,7 +32,9 @@ describe('LoginComponent', () => {
         BrowserAnimationsModule,
         RouterModule,
         MatInputModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientModule,
+        HttpClientTestingModule        
       ]
     })
     .compileComponents();
@@ -34,6 +44,9 @@ describe('LoginComponent', () => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    authService = TestBed.get(AuthenticationService);
+    httpTestingController = TestBed.get(HttpTestingController);
   });
 
   it('should create', () => {
@@ -47,6 +60,25 @@ describe('LoginComponent', () => {
   //   expect(component.email).toEqual("");
   //   expect(component.password).toEqual("");
   // });
+
+  it('returned Observable should match the right data', () => {
+    let mockUser = new User();
+    mockUser.email = validEmail;
+    mockUser.firstName = 'test';
+    mockUser.lastName = 'user';
+    
+    authService.login(validEmail, validPassword)
+      .subscribe(user => {
+        expect(user.firstName).toEqual('test');
+        expect(user.lastName).toEqual('user');
+      });
+
+    const req = httpTestingController.expectOne('http://localhost:8081/login');
+
+    expect(req.request.method).toEqual('POST');
+
+    req.flush(mockUser);
+  });
 
   it('empty form should be invalid', () => {
     expect(component.loginForm.valid).toBeFalsy();
